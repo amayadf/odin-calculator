@@ -2,6 +2,10 @@ let firstNumber = '';
 let secondNumber = '';
 let operator = null;
 
+//obtaining HTML elements
+
+
+//operation functions
 function add(a, b) {
     return a + b;
 }
@@ -19,7 +23,6 @@ function divide(a, b) {
 }
 
 function operate() {
-    let result;
     switch(operator){
         case '+':
             return add(firstNumber, secondNumber);
@@ -30,5 +33,7 @@ function operate() {
         case '/':
             if(secondNumber === 0) return null;
             else return divide(firstNumber, secondNumber);
+        default:
+            return null;
     }
 }
