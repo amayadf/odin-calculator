@@ -64,3 +64,27 @@ function evaluate() {
     currentOperationScreen.textContent = firstNumber;
 
 }
+
+//backspace function 
+function backspace() {
+    if(currentOperationScreen.textContent === '0') {
+        return
+    }
+    currentOperationScreen.textContent.slice(0, -1);
+    if(secondNumber !== '') {
+        secondNumber = currentOperationScreen.textContent;
+    }
+    else if(operator !== null) {
+        operator = null;
+    }
+    else {
+        firstNumber = currentOperationScreen.textContent;
+    }
+    if(currentOperationScreen.textContent === '') {
+        currentOperationScreen.textContent = '0';
+    }
+}
+
+//event listeners
+operateButton.addEventListener('click', evaluate);
+deleteButton.addEventListener('click', backspace);
