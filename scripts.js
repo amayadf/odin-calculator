@@ -1,6 +1,7 @@
 let firstNumber = '';
 let secondNumber = '';
 let operator = null;
+let resetScreen = false;
 
 //obtaining HTML elements
 let numberButtons = document.querySelectorAll('.number-button');
@@ -67,9 +68,7 @@ function evaluate() {
 
 //backspace function 
 function backspace() {
-    if(currentOperationScreen.textContent === '0') {
-        return
-    }
+    if(currentOperationScreen.textContent === '0') return
     currentOperationScreen.textContent.slice(0, -1);
     if(secondNumber !== '') {
         secondNumber = currentOperationScreen.textContent;
@@ -94,6 +93,25 @@ function clear() {
     previousOperationScreen.textContent = '';
 }
 
+//click number function
+function handleNumberClick(number) {
+    if(currentOperationScreen.textContent === '0' ) {
+        currentOperationScreen.textContent = '';
+    }
+    currentOperationScreen.append(number);
+}
+
+//set operator function
+function setOperator(operatorToSet) {
+    if(repeatOperation) 
+
+}
+
 //event listeners
 operateButton.addEventListener('click', evaluate);
 deleteButton.addEventListener('click', backspace);
+clearButton.addEventListener('click', clear);
+
+numberButtons.forEach(numberButton => numberButton.addEventListener('click', () => {
+    handleNumberClick(numberButton.textContent);
+}));
