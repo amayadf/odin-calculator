@@ -41,14 +41,14 @@ function operate() {
     let b = Number(secondNumber);
     switch(operator){
         case '+':
-            return add(a, b);
+            return add(a, b).toString();
         case '-':
-            return substract(a, b);
+            return substract(a, b).toString();
         case 'x':
-            return multiply(a, b);
+            return multiply(a, b).toString();
         case '÷':
-            if(b === 0) return null;
-            else return divide(a, b);
+            if(b == 0) return null;
+            else return divide(a, b).toString();
         default:
             return null;
     }
@@ -56,30 +56,31 @@ function operate() {
 
 //evaluate function 
 function evaluate() {
-    if(operator === null) return;
-    if(operator === '÷' && secondNumber === '0') {
+    if(operator == null) return;
+    if(operator == '÷' && secondNumber == '0') {
         currentOperationScreen.textContent = `LEARN TO DO MATH! YOU CAN'T DIVIDE BY 0.`
     }
+    secondNumber = currentOperationScreen.textContent;
     previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber}`;
-    firstNumber = operate().toString();
+    firstNumber = operate();
     currentOperationScreen.textContent = firstNumber;
 
 }
 
 //backspace function 
 function backspace() {
-    if(currentOperationScreen.textContent === '0') return
-    currentOperationScreen.textContent.slice(0, -1);
-    if(secondNumber !== '') {
+    if(currentOperationScreen.textContent == '0') return
+    currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
+    if(secondNumber != '') {
         secondNumber = currentOperationScreen.textContent;
     }
-    else if(operator !== null) {
+    else if(operator != null) {
         operator = null;
     }
     else {
         firstNumber = currentOperationScreen.textContent;
     }
-    if(currentOperationScreen.textContent === '') {
+    if(currentOperationScreen.textContent == '') {
         currentOperationScreen.textContent = '0';
     }
 }
@@ -95,7 +96,7 @@ function clear() {
 
 //click number function
 function handleNumberClick(number) {
-    if(currentOperationScreen.textContent === '0' ) {
+    if(currentOperationScreen.textContent == '0' ) {
         currentOperationScreen.textContent = '';
     }
     currentOperationScreen.append(number);
@@ -103,8 +104,10 @@ function handleNumberClick(number) {
 
 //set operator function
 function setOperator(operatorToSet) {
-    if(repeatOperation) 
-
+    if(operator != null) evaluate();
+    operator = operatorToSet;
+    firstNumber = currentOperationScreen.textContent;
+    previousOperationScreen.textContent = `${firstNumber} ${operator}`;
 }
 
 //event listeners
@@ -115,3 +118,7 @@ clearButton.addEventListener('click', clear);
 numberButtons.forEach(numberButton => numberButton.addEventListener('click', () => {
     handleNumberClick(numberButton.textContent);
 }));
+
+operatorButtons.forEach(operatorButton => operatorButton.addEventListener('click', () => {
+    setOperator(operatorButton.textContent);
+}))
