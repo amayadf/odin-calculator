@@ -52,3 +52,15 @@ function operate() {
             return null;
     }
 }
+
+//evaluate function 
+function evaluate() {
+    if(operator === null) return;
+    if(operator === '÷' && secondNumber === '0') {
+        currentOperationScreen.textContent = `LEARN TO DO MATH! YOU CAN'T DIVIDE BY 0.`
+    }
+    previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber}`;
+    firstNumber = operate().toString();
+    currentOperationScreen.textContent = firstNumber;
+
+}
