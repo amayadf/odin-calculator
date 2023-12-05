@@ -85,6 +85,15 @@ function backspace() {
     }
 }
 
+//clear function
+function clear() {
+    firstNumber = '';
+    secondNumber = '';
+    operator = null;
+    currentOperationScreen.textContent = '0';
+    previousOperationScreen.textContent = '';
+}
+
 //event listeners
 operateButton.addEventListener('click', evaluate);
 deleteButton.addEventListener('click', backspace);
