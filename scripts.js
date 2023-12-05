@@ -13,6 +13,11 @@ let deleteButton = document.querySelector('.delete-button');
 let previousOperationScreen = document.querySelector('.previous-operation-screen');
 let currentOperationScreen = document.querySelector('.current-operation-screen');
 
+//helper functions
+function roundNumber(number) {
+    return Math.round(number * 1000) / 1000;
+}
+
 //operation functions
 function add(a, b) {
     return a + b;
