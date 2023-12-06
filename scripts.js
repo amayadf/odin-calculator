@@ -20,6 +20,8 @@ function roundNumber(number) {
     return Math.round(number * 1000) / 1000;
 }
 
+//add the toggle operator
+//find out how to make = on repeat work correctly
 function toggleOperators() {
     
 }
@@ -63,7 +65,7 @@ function operate() {
 function evaluate() {
     if(operator == null) return;
     if(operator == '÷' && currentOperationScreen.textContent == '0') {
-        currentOperationScreen.textContent = `LEARNMATH! YOU CAN'T DIVIDE BY 0.`;
+        currentOperationScreen.textContent = `LEARN MATH! YOU CAN'T DIVIDE BY 0.`;
         previousOperationScreen.textContent = '';
         resetScreen = true;
         operator = null;
@@ -112,10 +114,46 @@ function setOperator(operatorToSet) {
     evaluateLast = false;
 }
 
+//decimal function
+function makeDecimal() {
+    if (resetScreen) {
+        currentOperationScreen.textContent = '';
+        resetScreen = false;
+    }
+    if (currentOperationScreen.textContent == '') {
+        currentOperationScreen.textContent = '0'
+    }
+    if (currentOperationScreen.textContent.includes('.')) {
+        return currentOperationScreen.textContent += '.';
+    }
+}
+
+//keyboard support
+window.addEventListener('keydown', handleKeyboardInput);
+
+function handleKeyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) handleNumberClick(e.key);
+    if (e.key == '.') makeDecimal();
+    if (e.key == '=' || e.key === 'Enter') evaluate();
+    if (e.key == 'Backspace') backspace();
+    if (e.key == 'Escape') clear();
+    if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
+        operator = (convertOperator(e.key))
+    }
+}
+
+function convertOperator(keyboardOperator) {
+    if (keyboardOperator === '/') return '÷';
+    if (keyboardOperator === '*') return '×';
+    if (keyboardOperator === '-') return '−';
+    if (keyboardOperator === '+') return '+';
+}
+
 //event listeners
 operateButton.addEventListener('click', evaluate);
 deleteButton.addEventListener('click', backspace);
 clearButton.addEventListener('click', clear);
+decimalButton.addEventListener('click', makeDecimal);
 
 numberButtons.forEach(numberButton => numberButton.addEventListener('click', () => {
     handleNumberClick(numberButton.textContent);
