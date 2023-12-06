@@ -134,19 +134,19 @@ window.addEventListener('keydown', handleKeyboardInput);
 function handleKeyboardInput(e) {
     if (e.key >= 0 && e.key <= 9) handleNumberClick(e.key);
     if (e.key == '.') makeDecimal();
-    if (e.key == '=' || e.key === 'Enter') evaluate();
+    if (e.key == '=' || e.key == 'Enter') evaluate();
     if (e.key == 'Backspace') backspace();
     if (e.key == 'Escape') clear();
     if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
-        operator = (convertOperator(e.key))
+        setOperator(convertOperator(e.key));
     }
 }
 
 function convertOperator(keyboardOperator) {
-    if (keyboardOperator === '/') return '÷';
-    if (keyboardOperator === '*') return '×';
-    if (keyboardOperator === '-') return '−';
-    if (keyboardOperator === '+') return '+';
+    if (keyboardOperator == '/') return '÷';
+    if (keyboardOperator == '*') return '×';
+    if (keyboardOperator == '-') return '−';
+    if (keyboardOperator == '+') return '+';
 }
 
 //event listeners
