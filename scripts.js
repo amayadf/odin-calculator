@@ -2,6 +2,7 @@ let firstNumber = '';
 let secondNumber = '';
 let operator = null;
 let resetScreen = false;
+let evaluateLast = false;
 
 //obtaining HTML elements
 let numberButtons = document.querySelectorAll('.number-button');
@@ -17,6 +18,10 @@ let currentOperationScreen = document.querySelector('.current-operation-screen')
 //helper functions
 function roundNumber(number) {
     return Math.round(number * 1000) / 1000;
+}
+
+function toggleOperators() {
+    
 }
 
 //operation functions
@@ -57,29 +62,23 @@ function operate() {
 //evaluate function 
 function evaluate() {
     if(operator == null) return;
-    if(operator == '÷' && secondNumber == '0') {
-        currentOperationScreen.textContent = `LEARN TO DO MATH! YOU CAN'T DIVIDE BY 0.`
+    if(operator == '÷' && currentOperationScreen.textContent == '0') {
+        currentOperationScreen.textContent = `LEARNMATH! YOU CAN'T DIVIDE BY 0.`;
+        previousOperationScreen.textContent = '';
+        resetScreen = true;
+        operator = null;
+        return;
     }
     secondNumber = currentOperationScreen.textContent;
-    previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber}`;
-    firstNumber = operate();
-    currentOperationScreen.textContent = firstNumber;
-
+    previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+    currentOperationScreen.textContent = operate();
+    evaluateLast = true;
 }
 
 //backspace function 
 function backspace() {
     if(currentOperationScreen.textContent == '0') return
     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
-    if(secondNumber != '') {
-        secondNumber = currentOperationScreen.textContent;
-    }
-    else if(operator != null) {
-        operator = null;
-    }
-    else {
-        firstNumber = currentOperationScreen.textContent;
-    }
     if(currentOperationScreen.textContent == '') {
         currentOperationScreen.textContent = '0';
     }
@@ -96,18 +95,21 @@ function clear() {
 
 //click number function
 function handleNumberClick(number) {
-    if(currentOperationScreen.textContent == '0' ) {
+    if(currentOperationScreen.textContent == '0' || resetScreen) {
         currentOperationScreen.textContent = '';
+        resetScreen = false;
     }
     currentOperationScreen.append(number);
 }
 
 //set operator function
 function setOperator(operatorToSet) {
-    if(operator != null) evaluate();
+    if(operator != null && !resetScreen && !evaluateLast) evaluate();
     operator = operatorToSet;
     firstNumber = currentOperationScreen.textContent;
     previousOperationScreen.textContent = `${firstNumber} ${operator}`;
+    resetScreen = true;
+    evaluateLast = false;
 }
 
 //event listeners
