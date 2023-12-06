@@ -1,5 +1,37 @@
+:root{
+    --main-dark: #202020;
+    --main-light:#DEEDF0;
+    --secondary-light: #FFF5EB;
+    --terciary-light:#F4C7AB;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
+html {
+    /*footer support*/
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--main-light);
+    color: var(--main-dark);
+    font-size: 18px;
+    font-family: 'Lexend';
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 /*footer*/
