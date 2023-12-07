@@ -22,11 +22,9 @@ function roundNumber(number) {
     return Math.round(number * 1000) / 1000;
 }
 
-//add the toggle operator
-//find out how to make = on repeat work correctly
-function toggleOperators(areDisabled) {
-    decimalButton.disabled = areDisabled;
-    operatorButtons.forEach(operatorButton => operatorButton.disabled = areDisabled);
+function toggleOperators(toDisable) {
+    decimalButton.disabled = toDisable;
+    operatorButtons.forEach(operatorButton => operatorButton.disabled = toDisable);
 }
 
 //operation functions
