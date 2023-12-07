@@ -1,3 +1,5 @@
+const ERROR_MESSAGE = `You can't divide by zero. Learn Math.`;
+
 let firstNumber = '';
 let secondNumber = '';
 let operator = null;
@@ -23,7 +25,7 @@ function roundNumber(number) {
 //add the toggle operator
 //find out how to make = on repeat work correctly
 function toggleOperators() {
-    
+
 }
 
 //operation functions
@@ -65,24 +67,32 @@ function operate() {
 function evaluate() {
     if(operator == null) return;
     if(operator == '÷' && currentOperationScreen.textContent == '0') {
-        currentOperationScreen.textContent = `You can't divide by zero. Learn Math.`;
+        currentOperationScreen.textContent = ERROR_MESSAGE;
         previousOperationScreen.textContent = '';
         resetScreen = true;
         operator = null;
-        return;
     }
-    secondNumber = currentOperationScreen.textContent;
-    previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
-    currentOperationScreen.textContent = operate();
-    evaluateLast = true;
+    else {
+        secondNumber = currentOperationScreen.textContent;
+        previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+        currentOperationScreen.textContent = operate();
+        evaluateLast = true;
+    }
 }
 
 //backspace function 
 function backspace() {
-    if(currentOperationScreen.textContent == '0') return
-    currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
-    if(currentOperationScreen.textContent == '') {
+    if(currentOperationScreen.textContent == '0') {
+        return;
+    }
+    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
         currentOperationScreen.textContent = '0';
+    }
+    else {
+        currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
+        if(currentOperationScreen.textContent == '') {
+            currentOperationScreen.textContent = '0';
+        }
     }
 }
 

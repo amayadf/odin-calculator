@@ -57,67 +57,69 @@ h1 {
     border-radius: 5%;
 }
 
-    /*screen*/
-    .screen {
-        width: 100%;
-        text-align: end;
-    }
+/**screen**/
+.screen {
+    width: 100%;
+    text-align: end;
+}
 
-    .previous-operation-screen {
-        padding-bottom: 8px;
-        height: 32px;
-    }
+.previous-operation-screen {
+    padding-bottom: 8px;
+    height: 32px;
+}
 
-    .current-operation-screen {
-        padding-bottom: 16px;
-        font-size: 22px;
-        height: 55px;
-    }
+.current-operation-screen {
+    padding-bottom: 16px;
+    font-size: 22px;
+    height: 55px;
+}
 
-    /*buttons*/
-    .buttons {
-        width: 100%;
-    }
+/**buttons**/
+.buttons {
+    width: 100%;
+}
 
-    button {
-        cursor: pointer;
-        font-family: 'Lexend';
-        background-color: inherit;
-        border: 1px solid var(--main-light);
-        background-color: var(--main-light);
-        font-size: 22px;
-        padding: 8px;
-        border-radius: 5%;
-    }
+button {
+    cursor: pointer;
+    font-family: 'Lexend';
+    background-color: inherit;
+    border: 1px solid var(--main-light);
+    background-color: var(--main-light);
+    font-size: 22px;
+    padding: 8px;
+    border-radius: 5%;
+}
     
-    button:hover {
-        background-color: var(--terciary-dark);
-        color: var(--main-light);
-        border-color: var(--main-light);
-    }
+button:hover {
+    background-color: var(--terciary-dark);
+    color: var(--main-light);
+    border-color: var(--main-light);
+}
 
-    .rectangle-buttons {
-        padding-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-    }
+/***rectangle buttons***/
+.rectangle-buttons {
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .rectangle-buttons button {
-        width: 49%;
-    }
+.rectangle-buttons button {
+    width: 49%;
+}
 
-    .square-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        row-gap: 8px;
-    }
+/***square buttons***/
+.square-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: 8px;
+}
 
-    .square-buttons button {
-        width: 23%;
-        height: 25%;
-    }
+.square-buttons button {
+    width: 23%;
+    height: 25%;
+}
 
 /*footer*/
 footer {
