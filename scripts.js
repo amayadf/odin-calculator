@@ -71,8 +71,6 @@ function evaluate() {
         currentOperationScreen.textContent = operate();
     }
     else if(currentOperationScreen.textContent == ERROR_MESSAGE) {
-        toggleOperators(false);
-        currentOperationScreen.textContent = '0';
         clear();
     }
     else if(operator == '÷' && currentOperationScreen.textContent == '0') {
@@ -95,8 +93,6 @@ function backspace() {
         return;
     }
     if(currentOperationScreen.textContent == ERROR_MESSAGE) {
-        currentOperationScreen.textContent = '0';
-        toggleOperators(false);
         clear();
     }
     else {
@@ -120,16 +116,17 @@ function clear() {
 }
 
 //click number function
-function handleNumberClick(number) {
+function addNumber(number) {
     if(currentOperationScreen.textContent == ERROR_MESSAGE) {
         clear();
-        toggleOperators(false);
     }
     if(currentOperationScreen.textContent == '0' || resetScreen) {
         currentOperationScreen.textContent = '';
         resetScreen = false;
     }
-    currentOperationScreen.append(number);
+    if(currentOperationScreen.textContent.length < 16){
+        currentOperationScreen.append(number);
+    }
 }
 
 //set operator function
@@ -143,8 +140,7 @@ function setOperator(operatorToSet) {
 }
 
 //decimal function
-function makeDecimal() {
-
+function addDecimal() {
     if (!currentOperationScreen.textContent.includes('.')) {
         return currentOperationScreen.textContent += '.';
     }
@@ -154,8 +150,8 @@ function makeDecimal() {
 window.addEventListener('keydown', handleKeyboardInput);
 
 function handleKeyboardInput(e) {
-    if (e.key >= 0 && e.key <= 9) handleNumberClick(e.key);
-    if (e.key == '.') makeDecimal();
+    if (e.key >= 0 && e.key <= 9) addNumber(e.key);
+    if (e.key == '.') addDecimal();
     if (e.key == '=' || e.key == 'Enter') evaluate();
     if (e.key == 'Backspace') backspace();
     if (e.key == 'Escape') clear();
@@ -175,10 +171,10 @@ function convertOperator(keyboardOperator) {
 operateButton.addEventListener('click', evaluate);
 deleteButton.addEventListener('click', backspace);
 clearButton.addEventListener('click', clear);
-decimalButton.addEventListener('click', makeDecimal);
+decimalButton.addEventListener('click', addDecimal);
 
 numberButtons.forEach(numberButton => numberButton.addEventListener('click', () => {
-    handleNumberClick(numberButton.textContent);
+    addNumber(numberButton.textContent);
 }));
 
 operatorButtons.forEach(operatorButton => operatorButton.addEventListener('click', () => {
