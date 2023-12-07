@@ -65,7 +65,7 @@ function operate() {
 function evaluate() {
     if(operator == null) return;
     if(operator == '÷' && currentOperationScreen.textContent == '0') {
-        currentOperationScreen.textContent = `LEARN MATH! YOU CAN'T DIVIDE BY 0.`;
+        currentOperationScreen.textContent = `You can't divide by zero. Learn Math.`;
         previousOperationScreen.textContent = '';
         resetScreen = true;
         operator = null;

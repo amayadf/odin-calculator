@@ -6,7 +6,7 @@
 :root{
     --main-dark: #213555;
     --secondary-dark:#497174;
-    --terciary-light:#EB6440;
+    --terciary-dark:#EB6440;
     --main-light:#EFF5F5;
     --secondary-light: #D6E4E5;
 }
@@ -51,9 +51,10 @@ h1 {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    width: 360px;
-    height: 420px;
+    width: 350px;
+    height: 430px;
     padding: 20px;
+    border-radius: 5%;
 }
 
     /*screen*/
@@ -70,6 +71,7 @@ h1 {
     .current-operation-screen {
         padding-bottom: 16px;
         font-size: 22px;
+        height: 55px;
     }
 
     /*buttons*/
@@ -85,6 +87,13 @@ h1 {
         background-color: var(--main-light);
         font-size: 22px;
         padding: 8px;
+        border-radius: 5%;
+    }
+    
+    button:hover {
+        background-color: var(--terciary-dark);
+        color: var(--main-light);
+        border-color: var(--main-light);
     }
 
     .rectangle-buttons {
