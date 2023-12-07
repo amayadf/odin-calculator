@@ -141,14 +141,10 @@ function setOperator(operatorToSet) {
 
 //decimal function
 function makeDecimal() {
-    if (resetScreen) {
-        currentOperationScreen.textContent = '';
-        resetScreen = false;
-    }
     if (currentOperationScreen.textContent == '') {
-        currentOperationScreen.textContent = '0'
+        currentOperationScreen.textContent = '0.'
     }
-    if (currentOperationScreen.textContent.includes('.')) {
+    if (!currentOperationScreen.textContent.includes('.')) {
         return currentOperationScreen.textContent += '.';
     }
 }
