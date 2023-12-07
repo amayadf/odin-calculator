@@ -24,8 +24,9 @@ function roundNumber(number) {
 
 //add the toggle operator
 //find out how to make = on repeat work correctly
-function toggleOperators() {
-
+function toggleOperators(areDisabled) {
+    decimalButton.disabled = areDisabled;
+    operatorButtons.forEach(operatorButton => operatorButton.disabled = areDisabled);
 }
 
 //operation functions
@@ -66,11 +67,16 @@ function operate() {
 //evaluate function 
 function evaluate() {
     if(operator == null) return;
-    if(operator == '÷' && currentOperationScreen.textContent == '0') {
+    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+        toggleOperators(false);
+        currentOperationScreen.textContent = '0';
+        clear();
+    }
+    else if(operator == '÷' && currentOperationScreen.textContent == '0') {
         currentOperationScreen.textContent = ERROR_MESSAGE;
         previousOperationScreen.textContent = '';
         resetScreen = true;
-        operator = null;
+        toggleOperators(true);
     }
     else {
         secondNumber = currentOperationScreen.textContent;
@@ -87,6 +93,8 @@ function backspace() {
     }
     if(currentOperationScreen.textContent == ERROR_MESSAGE) {
         currentOperationScreen.textContent = '0';
+        toggleOperators(false);
+        clear();
     }
     else {
         currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
@@ -98,6 +106,9 @@ function backspace() {
 
 //clear function
 function clear() {
+    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+        toggleOperators(false);
+    }
     firstNumber = '';
     secondNumber = '';
     operator = null;
@@ -107,6 +118,9 @@ function clear() {
 
 //click number function
 function handleNumberClick(number) {
+    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+        toggleOperators(false);
+    }
     if(currentOperationScreen.textContent == '0' || resetScreen) {
         currentOperationScreen.textContent = '';
         resetScreen = false;
