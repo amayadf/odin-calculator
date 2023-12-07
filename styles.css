@@ -65,12 +65,14 @@ h1 {
 
 .previous-operation-screen {
     padding-bottom: 8px;
-    height: 32px;
-    font-size: 18px;
+    height: 30px;
+    font-size: 14px;
+    overflow: auto;
 }
 
 .current-operation-screen {
     padding-bottom: 16px;
+    font-size: 28px;
     height: 55px;
 }
 

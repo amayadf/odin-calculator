@@ -144,9 +144,7 @@ function setOperator(operatorToSet) {
 
 //decimal function
 function makeDecimal() {
-    if (currentOperationScreen.textContent == '') {
-        currentOperationScreen.textContent = '0.'
-    }
+
     if (!currentOperationScreen.textContent.includes('.')) {
         return currentOperationScreen.textContent += '.';
     }
