@@ -64,50 +64,48 @@ function operate() {
 
 //evaluate function 
 function evaluate() {
-    if(operator == null) return;
-    if(evaluateLast) {
-        firstNumber = currentOperationScreen.textContent;
-        previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
-        currentOperationScreen.textContent = operate();
-    }
-    else if(currentOperationScreen.textContent == ERROR_MESSAGE) {
-        clear();
-    }
-    else if(operator == '÷' && currentOperationScreen.textContent == '0') {
-        currentOperationScreen.textContent = ERROR_MESSAGE;
-        previousOperationScreen.textContent = '';
-        resetScreen = true;
-        toggleOperators(true);
-    }
-    else {
-        secondNumber = currentOperationScreen.textContent;
-        previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
-        currentOperationScreen.textContent = operate();
-        evaluateLast = true;
+    if(operator != null) {
+        if(currentOperationScreen.textContent == ERROR_MESSAGE){
+            clear()
+        }
+        else if(operator == '÷' && currentOperationScreen.textContent == '0') {
+            currentOperationScreen.textContent = ERROR_MESSAGE;
+            previousOperationScreen.textContent = '';
+            resetScreen = true;
+            toggleOperators(true);
+        }
+        else {
+            if(evaluateLast) {
+                firstNumber = currentOperationScreen.textContent;
+            }
+            else {
+                secondNumber = currentOperationScreen.textContent;
+                evaluateLast = true;
+            }
+            previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+            currentOperationScreen.textContent = operate();
+        }
     }
 }
 
 //backspace function 
 function backspace() {
-    if(currentOperationScreen.textContent == '0') {
-        return;
-    }
-    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
-        clear();
-    }
-    else {
-        currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
-        if(currentOperationScreen.textContent == '') {
-            currentOperationScreen.textContent = '0';
+    if(currentOperationScreen.textContent != '0') {
+        if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+            clear();
+        }
+        else {
+            currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
+            if(currentOperationScreen.textContent == '') {
+                currentOperationScreen.textContent = '0';
+            }
         }
     }
-}
+}   
 
 //clear function
 function clear() {
-    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
-        toggleOperators(false);
-    }
+    toggleOperators(false);
     firstNumber = '';
     secondNumber = '';
     operator = null;
