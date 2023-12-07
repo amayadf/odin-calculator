@@ -49,9 +49,10 @@ h1 {
     background-color: var(--secondary-light);
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    width: 450px;
-    height: 500px;
+    width: 360px;
+    height: 420px;
     padding: 20px;
 }
 
@@ -81,11 +82,33 @@ h1 {
         font-family: 'Lexend';
         background-color: inherit;
         border: 1px solid var(--main-light);
+        background-color: var(--main-light);
         font-size: 22px;
         padding: 8px;
     }
 
-    .rectangle-buttons 
+    .rectangle-buttons {
+        padding-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .rectangle-buttons button {
+        width: 49%;
+    }
+
+    .square-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        row-gap: 8px;
+    }
+
+    .square-buttons button {
+        width: 23%;
+        height: 25%;
+    }
 
 /*footer*/
 footer {
