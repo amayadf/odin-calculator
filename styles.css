@@ -28,7 +28,7 @@ html {
 body {
     background-color: var(--main-light);
     color: var(--main-dark);
-    font-size: 18px;
+    font-size: 22px;
     font-family: 'Lexend';
     margin: 0;
     height: 100vh;
@@ -66,11 +66,11 @@ h1 {
 .previous-operation-screen {
     padding-bottom: 8px;
     height: 32px;
+    font-size: 18px;
 }
 
 .current-operation-screen {
     padding-bottom: 16px;
-    font-size: 22px;
     height: 55px;
 }
 
@@ -81,11 +81,11 @@ h1 {
 
 button {
     cursor: pointer;
-    font-family: 'Lexend';
+    font-family: inherit;
     background-color: inherit;
-    border: 1px solid var(--main-light);
+    border: 2px solid var(--main-light);
     background-color: var(--main-light);
-    font-size: 22px;
+    font-size: inherit;
     padding: 8px;
     border-radius: 5%;
 }
@@ -124,11 +124,13 @@ button:enabled:hover {
 .operate-button {
     background-color: var(--secondary-dark);
     color: var(--main-light);
+    border-color: var(--secondary-dark);
 }
 
 /*footer*/
 footer {
     padding-bottom: 16px;
+    font-size: 18px;
 }
 
 a {

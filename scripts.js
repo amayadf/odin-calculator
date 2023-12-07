@@ -67,7 +67,12 @@ function operate() {
 //evaluate function 
 function evaluate() {
     if(operator == null) return;
-    if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+    if(evaluateLast) {
+        firstNumber = currentOperationScreen.textContent;
+        previousOperationScreen.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+        currentOperationScreen.textContent = operate();
+    }
+    else if(currentOperationScreen.textContent == ERROR_MESSAGE) {
         toggleOperators(false);
         currentOperationScreen.textContent = '0';
         clear();
