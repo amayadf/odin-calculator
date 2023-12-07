@@ -145,8 +145,6 @@ function addDecimal() {
 }
 
 //keyboard support
-window.addEventListener('keydown', handleKeyboardInput);
-
 function handleKeyboardInput(e) {
     if (e.key >= 0 && e.key <= 9) addNumber(e.key);
     if (e.key == '.') addDecimal();
@@ -166,6 +164,7 @@ function convertOperator(keyboardOperator) {
 }
 
 //event listeners
+window.addEventListener('keydown', handleKeyboardInput);
 operateButton.addEventListener('click', evaluate);
 deleteButton.addEventListener('click', backspace);
 clearButton.addEventListener('click', clear);
