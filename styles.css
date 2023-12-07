@@ -90,7 +90,7 @@ button {
     border-radius: 5%;
 }
     
-button:hover {
+button:enabled:hover {
     background-color: var(--terciary-dark);
     color: var(--main-light);
     border-color: var(--main-light);
@@ -119,6 +119,11 @@ button:hover {
 .square-buttons button {
     width: 23%;
     height: 25%;
+}
+
+.operate-button {
+    background-color: var(--secondary-dark);
+    color: var(--main-light);
 }
 
 /*footer*/

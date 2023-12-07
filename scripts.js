@@ -119,6 +119,7 @@ function clear() {
 //click number function
 function handleNumberClick(number) {
     if(currentOperationScreen.textContent == ERROR_MESSAGE) {
+        clear();
         toggleOperators(false);
     }
     if(currentOperationScreen.textContent == '0' || resetScreen) {
