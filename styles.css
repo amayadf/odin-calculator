@@ -4,10 +4,11 @@
 }
 
 :root{
-    --main-dark: #202020;
-    --main-light:#DEEDF0;
-    --secondary-light: #FFF5EB;
-    --terciary-light:#F4C7AB;
+    --main-dark: #213555;
+    --secondary-dark:#497174;
+    --terciary-light:#EB6440;
+    --main-light:#EFF5F5;
+    --secondary-light: #D6E4E5;
 }
 
 *,
@@ -38,6 +39,53 @@ body {
     align-items: center;
 }
 
+/*header*/
+h1 {
+    padding-top: 16px;
+}
+
+/*calculator*/
+.calculator {
+    background-color: var(--secondary-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 500px;
+    padding: 20px;
+}
+
+    /*screen*/
+    .screen {
+        width: 100%;
+        text-align: end;
+    }
+
+    .previous-operation-screen {
+        padding-bottom: 8px;
+        height: 32px;
+    }
+
+    .current-operation-screen {
+        padding-bottom: 16px;
+        font-size: 22px;
+    }
+
+    /*buttons*/
+    .buttons {
+        width: 100%;
+    }
+
+    button {
+        cursor: pointer;
+        font-family: 'Lexend';
+        background-color: inherit;
+        border: 1px solid var(--main-light);
+        font-size: 22px;
+        padding: 8px;
+    }
+
+    .rectangle-buttons 
 
 /*footer*/
 footer {
