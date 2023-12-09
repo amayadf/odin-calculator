@@ -23,12 +23,12 @@ html {
     /*footer support*/
     position: relative;
     min-height: 100%;
+    font-size: 22px;
 }
 
 body {
     background-color: var(--main-light);
     color: var(--main-dark);
-    font-size: 22px;
     font-family: 'Lexend';
     margin: 0;
     height: 100vh;
@@ -66,13 +66,13 @@ h1 {
 .previous-operation-screen {
     padding-bottom: 8px;
     height: 30px;
-    font-size: 14px;
+    font-size: 0.8rem;
     overflow: auto;
 }
 
 .current-operation-screen {
     padding-bottom: 16px;
-    font-size: 26px;
+    font-size: 1.4rem;
     height: 55px;
 }
 
@@ -132,7 +132,7 @@ button:enabled:hover {
 /*footer*/
 footer {
     padding-bottom: 16px;
-    font-size: 18px;
+    font-size: 0.8rem;
 }
 
 a {
